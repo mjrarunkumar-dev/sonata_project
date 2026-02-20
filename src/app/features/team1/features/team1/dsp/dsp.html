@@ -1,0 +1,67 @@
+<div class="dsp-container">
+
+  <h2>Developer Streaming Panel (DSP)</h2>
+
+  <!-- Metrics -->
+  <div class="metrics">
+
+    <div class="metric total">
+      <h4>Total</h4>
+      <p>{{ total() }}</p>
+    </div>
+
+    <div class="metric ach">
+      <h4>ACH</h4>
+      <p>{{ ach() }}</p>
+    </div>
+
+    <div class="metric wire">
+      <h4>WIRE</h4>
+      <p>{{ wire() }}</p>
+    </div>
+
+    <div class="metric card">
+      <h4>CARD</h4>
+      <p>{{ card() }}</p>
+    </div>
+
+  </div>
+
+  <!-- Recent Transactions -->
+  <div class="section">
+    <h3>Latest Transactions</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Type</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (tx of transactions().slice(0, 10); track tx.id) {
+          <tr>
+            <td>{{ tx.id }}</td>
+            <td>{{ tx.type }}</td>
+            <td>{{ tx.status }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Logs -->
+  <div class="section logs">
+    <h3>System Logs</h3>
+
+    @for (log of logs().slice(0, 10); track $index) {
+      <div class="log-item">
+        {{ log }}
+      </div>
+    }
+
+  </div>
+
+</div>

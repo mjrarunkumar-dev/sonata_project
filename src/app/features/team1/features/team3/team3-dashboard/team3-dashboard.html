@@ -1,0 +1,85 @@
+<div class="layout">
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <h2>Streaming Reconciliation Engine</h2>
+
+    <!-- Summary Cards -->
+    <div class="summary">
+
+      <div class="card total">
+        <h3>Total</h3>
+        <p>{{ totalCount() }}</p>
+      </div>
+
+      <div class="card ach">
+        <h3>ACH</h3>
+        <p>{{ achCount() }}</p>
+      </div>
+
+      <div class="card wire">
+        <h3>WIRE</h3>
+        <p>{{ wireCount() }}</p>
+      </div>
+
+      <div class="card card-type">
+        <h3>CARD</h3>
+        <p>{{ cardCount() }}</p>
+      </div>
+
+    </div>
+
+    <!-- Live Transaction Feed -->
+    <div class="table-container">
+
+      <h3>Live Transactions</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (tx of transactions().slice(0, 20); track tx.id) {
+            <tr>
+              <td>{{ tx.id }}</td>
+              <td>{{ tx.type }}</td>
+              <td>${{ tx.amount }}</td>
+              <td>
+                <span class="status" [ngClass]="tx.status.toLowerCase()">
+                  {{ tx.status }}
+                </span>
+              </td>
+              <td>{{ tx.timestamp | date:'mediumTime' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+  <!-- DEV AUDIT SIDEBAR -->
+  <div class="audit-sidebar">
+
+    <h3>Developer Audit Log</h3>
+
+    <div class="log-list">
+      @for (log of logs().slice(0, 50); track $index) {
+        <div class="log-item">
+          {{ log }}
+        </div>
+      }
+    </div>
+
+  </div>
+
+</div>  

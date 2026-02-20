@@ -1,0 +1,17 @@
+<h2>Dashboard</h2>
+
+<p>Your Role: {{ role() }}</p>
+
+@if (role() === 'TEAM1') {
+  <div>Team 1 Content</div>
+}
+
+@if (role() === 'TEAM2') {
+  <div>Team 2 Content</div>
+}
+
+@if (role() === 'TEAM3') {
+  <div>Team 3 Content</div>
+}
+
+<button (click)="logout()">Logout</button>

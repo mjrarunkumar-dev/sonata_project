@@ -1,0 +1,53 @@
+<div class="table-container">
+
+  <h3>Team2 Projects</h3>
+
+  @if (loading()) {
+    <div class="loading">Loading projects...</div>
+  } @else {
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Project</th>
+          <th>Owner</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (project of paginatedData(); track project.id) {
+          <tr>
+            <td>{{ project.id }}</td>
+            <td>{{ project.projectName }}</td>
+            <td>{{ project.owner }}</td>
+
+            <td>
+              <span 
+                class="status-badge"
+                [ngClass]="project.status.toLowerCase()">
+                {{ project.status }}
+              </span>
+            </td>
+
+            <td>{{ project.createdAt | date:'short' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      @for (page of [].constructor(totalPages()); let i = $index; track i) {
+        <button
+          [class.active]="currentPage() === (i + 1)"
+          (click)="changePage(i + 1)">
+          {{ i + 1 }}
+        </button>
+      }
+    </div>
+
+  }
+
+</div>

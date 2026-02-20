@@ -1,0 +1,66 @@
+<div class="transaction-layout">
+
+  <!-- LEFT: TABLE -->
+  <div class="table-section">
+
+    <h3>Team1 Transactions</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (tx of paginatedData(); track tx.id) {
+          <tr (click)="selectTransaction(tx)">
+            <td>{{ tx.id }}</td>
+            <td>{{ tx.type }}</td>
+            <td>${{ tx.amount }}</td>
+            <td>
+              <span class="status-badge" [ngClass]="tx.status.toLowerCase()">
+                {{ tx.status }}
+              </span>
+            </td>
+            <td>{{ tx.timestamp | date:'short' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      @for (page of [].constructor(totalPages()); let i = $index; track i) {
+        <button
+          [class.active]="currentPage() === (i + 1)"
+          (click)="changePage(i + 1)">
+          {{ i + 1 }}
+        </button>
+      }
+    </div>
+
+  </div>
+
+  <!-- RIGHT: DETAILS PANEL -->
+  @if (selectedTx()) {
+    <div class="details-panel">
+
+      <h4>Transaction Details</h4>
+
+      <p><strong>ID:</strong> {{ selectedTx()?.id }}</p>
+      <p><strong>Type:</strong> {{ selectedTx()?.type }}</p>
+      <p><strong>Amount:</strong> ${{ selectedTx()?.amount }}</p>
+      <p><strong>Status:</strong> {{ selectedTx()?.status }}</p>
+      <p><strong>Date:</strong> {{ selectedTx()?.timestamp | date:'full' }}</p>
+
+      <button class="close-btn" (click)="closeDetails()">Close</button>
+
+    </div>
+  }
+
+</div>

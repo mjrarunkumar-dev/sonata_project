@@ -1,0 +1,111 @@
+.table-container {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* Title */
+h3 {
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Loading */
+.loading {
+  padding: 20px;
+  text-align: center;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background: #0f172a;
+  color: white;
+}
+
+th {
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 14px;
+  font-size: 14px;
+  color: #334155;
+}
+
+/* Rows */
+tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: 0.2s ease-in-out;
+}
+
+tbody tr:hover {
+  background: #f1f5f9;
+  cursor: pointer;
+}
+
+/* Status Badge */
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  text-transform: capitalize;
+}
+
+.status-badge.active {
+  background: #16a34a;
+}
+
+.status-badge.pending {
+  background: #f59e0b;
+}
+
+.status-badge.completed {
+  background: #2563eb;
+}
+
+.status-badge.failed {
+  background: #dc2626;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 16px;
+  display: flex;
+  gap: 6px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: none;
+  background: #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  font-size: 13px;
+}
+
+.pagination button:hover {
+  background: #cbd5e1;
+}
+
+.pagination button.active {
+  background: #2563eb;
+  color: white;
+}

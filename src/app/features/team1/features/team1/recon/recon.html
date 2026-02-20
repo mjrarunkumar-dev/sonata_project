@@ -1,0 +1,13 @@
+<div class="recon-container">
+
+  <h2>Interceptor-Based Reconciliation</h2>
+
+  <button 
+    class="submit-btn"
+    [disabled]="isSubmitting"
+    (click)="submitTransaction()">
+
+    {{ isSubmitting ? 'Reconciling...' : 'Submit Transaction' }}
+  </button>
+
+</div>

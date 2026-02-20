@@ -1,0 +1,35 @@
+<div class="rr-container">
+
+  <h3>Manual Reconciliation Runner</h3>
+
+  <button class="submit-btn" (click)="submitTransaction()">
+    Submit Transaction
+  </button>
+
+  <hr />
+
+  <h4>Recent Transactions</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (tx of transactions().slice(0, 10); track tx.id) {
+        <tr>
+          <td>{{ tx.id }}</td>
+          <td>{{ tx.type }}</td>
+          <td>${{ tx.amount }}</td>
+          <td>{{ tx.status }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+</div>

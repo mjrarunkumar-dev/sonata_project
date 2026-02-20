@@ -1,0 +1,65 @@
+.dsp-container {
+  padding: 20px;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.metric {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.metric h4 {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.metric p {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.section {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 8px;
+  background: #1e293b;
+  color: white;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.logs {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.log-item {
+  font-size: 12px;
+  padding: 4px 0;
+  border-bottom: 1px dashed #e2e8f0;
+}
