@@ -1,0 +1,101 @@
+STREAMING TRANSACTION RECONCILIATION ENGINE
+
+Project Overview
+
+This project modernizes a legacy banking operations dashboard into a
+real-time Streaming Transaction Reconciliation Engine using Angular
+Standalone architecture.
+
+The system simulates high-frequency financial transactions (ACH, WIRE,
+CARD), implements optimistic UI updates, interceptor-based
+reconciliation, defensive programming patterns, and observability
+mechanisms.
+
+------------------------------------------------------------------------
+
+1. Architecture Decisions
+
+-   Angular Standalone Components
+-   Signal-based Global Store (Reactive State Management)
+-   OnPush Change Detection Strategy
+-   Functional HTTP Interceptors
+-   Web Worker for heavy aggregation
+-   Feature-based modular folder structure
+-   Role-Based Access Control simulation
+
+------------------------------------------------------------------------
+
+2. Core Features Implemented
+
+Phase 1 – Signal-Based Store - Created TransactionStore using Angular
+signals - Maintains immutable transaction state - Provides computed
+summaries (ACH/WIRE/CARD breakdown) - Logs state changes
+
+Phase 2 – Streaming Engine - Simulated 50+ transactions per second using
+RxJS interval - Random transaction generator - Real-time UI updates via
+signals
+
+Phase 3 – Optimistic UI & Rollback - Transactions immediately appear as
+PENDING - HTTP Interceptor simulates 3-second server reconciliation - On
+success → marked SUCCESS - On failure → rolled back to FAILED
+
+Phase 4 – Idempotency Layer - Prevents duplicate submissions - Uses Set
+to track processing transaction IDs - Defensive programming against
+double-clicks
+
+Phase 5 – Web Worker Aggregation - Heavy summary calculations moved to
+aggregation.worker.ts - Keeps main UI thread responsive at high
+throughput - Updates summary metrics asynchronously
+
+Phase 6 – Observability (DSP) - Developer Streaming Panel (DSP) -
+Displays throughput (tx/sec) - Shows transaction logs - Monitors system
+behavior in real time
+
+Phase 7 – HTTP Interceptor Reconciliation - Functional interceptor
+intercepts ‘/api/reconcile’ - Simulates network latency (3 seconds) -
+Random success/failure simulation - Separates reconciliation logic from
+UI layer
+
+------------------------------------------------------------------------
+
+3. Performance & Resilience
+
+-   OnPush change detection
+-   Web Worker offloading
+-   Signal-based fine-grained reactivity
+-   Optimistic updates
+-   Failure handling & rollback logic
+-   Idempotency protection
+
+------------------------------------------------------------------------
+
+4. Routing Structure
+
+/team1/dashboard /team1/rr /team1/dsp /team1/recon
+
+Nested routing ensures modularity and layout reuse.
+
+------------------------------------------------------------------------
+
+5. Interview Explanation Summary
+
+“I built a Signal-based streaming reconciliation engine that processes
+50+ transactions per second, performs optimistic UI updates, reconciles
+via a functional HTTP interceptor, offloads heavy aggregation to Web
+Workers, and provides observability through a developer monitoring
+panel.”
+
+------------------------------------------------------------------------
+
+6. Possible Future Enhancements
+
+-   Exponential backoff retry logic
+-   Circuit breaker pattern
+-   Rolling transaction memory cap
+-   Real WebSocket integration
+-   Token expiration handling
+-   Latency tracking metrics
+
+------------------------------------------------------------------------
+
+End of Documentation
